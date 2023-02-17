@@ -226,6 +226,35 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "list",
+			"item": [
+				{
+					"name": "topic",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/list/topics",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"list",
+								"topics"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"event": [

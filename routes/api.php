@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\v1\AuthController;
+use App\Http\Controllers\Api\v1\ListController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,5 +24,15 @@ Route::group(
     function() {
         Route::post('/check-device', [AuthController::class, 'checkDevice'])->name('checkDevice');
         Route::post('/register', [AuthController::class, 'register'])->name('register');
+    }
+);
+
+Route::group(
+    [
+        'prefix' => 'v1/list',
+        'name' => 'list.'
+    ],
+    function() {
+        Route::get('/topics', [ListController::class, 'topics'])->name('topics');
     }
 );

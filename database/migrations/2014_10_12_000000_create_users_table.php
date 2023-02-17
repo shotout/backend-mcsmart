@@ -15,11 +15,28 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
+            $table->string('name')->nullable();
+            $table->string('gender')->nullable();
+            $table->string('email')->unique()->nullable();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+            $table->string('password')->nullable();
+            $table->rememberToken()->nullable();
+
+            $table->boolean('impress_friends')->default(false);
+            $table->boolean('impress_business')->default(false);
+            $table->boolean('impress_children')->default(false);
+            $table->boolean('impress_members')->default(false);
+
+            $table->tinyInteger('commit_goal')->nullable();
+
+            $table->string('purchasely_id')->nullable();
+
+            $table->boolean('is_member')->default(false);
+            $table->string('device_id')->nullable();
+            $table->string('fcm_token')->nullable();
+            $table->integer('notif_count')->default(0);
+
+            $table->tinyInteger('status')->default(2);
             $table->timestamps();
         });
     }

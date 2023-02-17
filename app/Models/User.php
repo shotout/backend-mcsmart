@@ -12,6 +12,10 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    // list status
+    const IN_ACTIVE = 1;
+    const ACTIVE = 2;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -41,4 +45,19 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function schedule()
+    {
+        return $this->hasOne('\App\Models\Schedule');
+    }
+
+    public function topics()
+    {
+        return $this->belongsToMany('\App\Models\Topic', 'user_topic');
+    }
+
+    public function subscription()
+    {
+        return $this->hasOne('\App\Models\Subscription')->where('status', 2)->with('plan');
+    }
 }

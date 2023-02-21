@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\v1;
 use App\Models\Theme;
 use App\Models\Topic;
 use App\Models\Category;
+use App\Models\UserCategory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -41,7 +42,28 @@ class ListController extends Controller
             });
         }
 
-        $data = $query->get();
+        $categories = $query->get();
+
+        $data = array(
+            "category" => $categories,
+            "alternative" => null
+        );
+
+        // alternative category
+        if ($request->has('search') && $request->input('search') != '') {
+            if (!count($categories)) {
+                if (auth('sanctum')->check()) {
+                    $myCategory = UserCategory::where('user_id', auth('sanctum')->user()->id)
+                        ->pluck('category_id')
+                        ->toArray();
+
+                    $data['alternative'] = Category::with('icon')
+                        ->whereNotIn('id', $myCategory)
+                        ->where('status', 2)
+                        ->get();
+                }
+            }
+        }
 
         return response()->json([
             'status' => 'success',

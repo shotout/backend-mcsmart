@@ -23,7 +23,7 @@ class AuthController extends Controller
         if ($user) {
             $token = $user->createToken('auth_token')->plainTextToken;
 
-            $data = User::with('schedule','topics','subscription')->find($user->id);
+            $data = User::with('schedule','topics','subscription','themes','categories')->find($user->id);
 
             return response()->json([
                 'status' => 'success',
@@ -147,6 +147,14 @@ class AuthController extends Controller
                 }
             // ----------------------
 
+            // themes ------------
+                $user->themes()->sync([1]);
+            // -----------------------
+
+            // categories ------------
+                $user->categories()->sync([1]);
+            // -----------------------
+
             return $user;
         });
 
@@ -155,7 +163,7 @@ class AuthController extends Controller
             $token = $user->createToken('auth_token')->plainTextToken;
 
             // data
-            $data = User::with('schedule','topics','subscription')->find($user->id);
+            $data = User::with('schedule','topics','subscription','themes','categories')->find($user->id);
 
             // count user pool
             UserPool::dispatch($user->id)->onQueue(env('SUPERVISOR'));

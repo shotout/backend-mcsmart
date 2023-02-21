@@ -60,4 +60,14 @@ class User extends Authenticatable
     {
         return $this->hasOne('\App\Models\Subscription')->where('status', 2)->with('plan');
     }
+
+    public function themes()
+    {
+        return $this->belongsToMany('\App\Models\Theme', 'user_themes')->with('background');
+    }
+
+    public function categories()
+    {
+        return $this->belongsToMany('\App\Models\Category', 'user_category');
+    }
 }

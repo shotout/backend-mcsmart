@@ -253,6 +253,60 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "theme",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/list/themes",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"list",
+								"themes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "category",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/list/categories?search=",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"list",
+								"categories"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		}

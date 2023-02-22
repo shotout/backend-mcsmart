@@ -404,6 +404,89 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "rating",
+			"item": [
+				{
+					"name": "show",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "4|kRVJSYvOYT5nVsXBpjb6H4VT3NoVF3F7kbygY4iG",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/user/rating",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"user",
+								"rating"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "4|kRVJSYvOYT5nVsXBpjb6H4VT3NoVF3F7kbygY4iG",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "value",
+									"value": "4",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/user/rating",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"user",
+								"rating"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"event": [

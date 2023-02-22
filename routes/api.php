@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\v1\AuthController;
 use App\Http\Controllers\Api\v1\ListController;
 use App\Http\Controllers\Api\v1\QuoteController;
+use App\Http\Controllers\Api\v1\UserRatingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +38,18 @@ Route::group(
         Route::get('/topics', [ListController::class, 'topics'])->name('topics');
         Route::get('/themes', [ListController::class, 'themes'])->name('themes');
         Route::get('/categories', [ListController::class, 'categories'])->name('categories');
+    }
+);
+
+Route::group(
+    [
+        'middleware' => 'auth:sanctum',
+        'prefix' => 'v1/user',
+        'name' => 'user.'
+    ],
+    function() {
+        Route::get('/rating', [UserRatingController::class, 'show'])->name('rating.show');
+        Route::post('/rating', [UserRatingController::class, 'store'])->name('rating.store');
     }
 );
 

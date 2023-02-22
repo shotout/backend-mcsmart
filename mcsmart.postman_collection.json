@@ -430,12 +430,11 @@
 							}
 						],
 						"url": {
-							"raw": "{{base_url}}/user/rating",
+							"raw": "{{base_url}}/rating",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
-								"user",
 								"rating"
 							]
 						}
@@ -474,13 +473,270 @@
 							]
 						},
 						"url": {
-							"raw": "{{base_url}}/user/rating",
+							"raw": "{{base_url}}/rating",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
-								"user",
 								"rating"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "category",
+			"item": [
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "4|kRVJSYvOYT5nVsXBpjb6H4VT3NoVF3F7kbygY4iG",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "categories[0]",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "categories[1]",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "categories[2]",
+									"value": "4",
+									"type": "text"
+								},
+								{
+									"key": "_method",
+									"value": "PATCH",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/category",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"category"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "theme",
+			"item": [
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "4|kRVJSYvOYT5nVsXBpjb6H4VT3NoVF3F7kbygY4iG",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "_method",
+									"value": "PATCH",
+									"type": "text"
+								},
+								{
+									"key": "themes[0]",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "themes[1]",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "themes[2]",
+									"value": "3",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/theme",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"theme"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "info",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "4|kRVJSYvOYT5nVsXBpjb6H4VT3NoVF3F7kbygY4iG",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/user",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "4|kRVJSYvOYT5nVsXBpjb6H4VT3NoVF3F7kbygY4iG",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "_method",
+									"value": "PATCH",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "Julian Edit",
+									"type": "text"
+								},
+								{
+									"key": "gender",
+									"value": "Female",
+									"type": "text"
+								},
+								{
+									"key": "often",
+									"value": "15",
+									"type": "text"
+								},
+								{
+									"key": "start",
+									"value": "17:00",
+									"type": "text"
+								},
+								{
+									"key": "end",
+									"value": "23:00",
+									"type": "text"
+								},
+								{
+									"key": "fcm_token",
+									"value": "2321defd",
+									"type": "text"
+								},
+								{
+									"key": "notif_count",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "timezone",
+									"value": "Asia/Bangkok",
+									"type": "text"
+								},
+								{
+									"key": "commit_goal",
+									"value": "6",
+									"type": "text"
+								},
+								{
+									"key": "purchasely_id",
+									"value": "1234",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/user",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"user"
 							]
 						}
 					},

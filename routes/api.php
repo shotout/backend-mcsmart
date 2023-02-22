@@ -5,7 +5,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\v1\AuthController;
 use App\Http\Controllers\Api\v1\ListController;
 use App\Http\Controllers\Api\v1\QuoteController;
+use App\Http\Controllers\Api\v1\UserThemeController;
 use App\Http\Controllers\Api\v1\UserRatingController;
+use App\Http\Controllers\Api\v1\UserProfileController;
+use App\Http\Controllers\Api\v1\UserCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,12 +47,46 @@ Route::group(
 Route::group(
     [
         'middleware' => 'auth:sanctum',
+        'prefix' => 'v1/rating',
+        'name' => 'rating.'
+    ],
+    function() {
+        Route::get('/', [UserRatingController::class, 'show'])->name('show');
+        Route::post('/', [UserRatingController::class, 'store'])->name('store');
+    }
+);
+
+Route::group(
+    [
+        'middleware' => 'auth:sanctum',
         'prefix' => 'v1/user',
         'name' => 'user.'
     ],
     function() {
-        Route::get('/rating', [UserRatingController::class, 'show'])->name('rating.show');
-        Route::post('/rating', [UserRatingController::class, 'store'])->name('rating.store');
+        Route::get('/', [UserProfileController::class, 'show'])->name('show');
+        Route::patch('/', [UserProfileController::class, 'update'])->name('update');
+    }
+);
+
+Route::group(
+    [
+        'middleware' => 'auth:sanctum',
+        'prefix' => 'v1/category',
+        'name' => 'category.'
+    ],
+    function() {
+        Route::patch('/', [UserCategoryController::class, 'update'])->name('update');
+    }
+);
+
+Route::group(
+    [
+        'middleware' => 'auth:sanctum',
+        'prefix' => 'v1/theme',
+        'name' => 'theme.'
+    ],
+    function() {
+        Route::patch('/', [UserThemeController::class, 'update'])->name('update');
     }
 );
 

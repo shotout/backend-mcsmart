@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\v1\AuthController;
 use App\Http\Controllers\Api\v1\ListController;
+use App\Http\Controllers\Api\v1\QuoteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,5 +37,17 @@ Route::group(
         Route::get('/topics', [ListController::class, 'topics'])->name('topics');
         Route::get('/themes', [ListController::class, 'themes'])->name('themes');
         Route::get('/categories', [ListController::class, 'categories'])->name('categories');
+    }
+);
+
+Route::group(
+    [
+        'middleware' => 'auth:sanctum',
+        'prefix' => 'v1/quotes',
+        'name' => 'quote.'
+    ],
+    function() {
+        Route::get('/', [QuoteController::class, 'index'])->name('index');
+        Route::post('/share/{id}', [QuoteController::class, 'share'])->name('share');
     }
 );

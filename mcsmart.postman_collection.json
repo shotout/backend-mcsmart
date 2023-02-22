@@ -281,6 +281,16 @@
 				{
 					"name": "category",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "3|vWINHUn2ankhoIrQc6L32Eq1CQPagwjIGDWrCnqX",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
 							{
@@ -290,7 +300,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{base_url}}/list/categories?search=",
+							"raw": "{{base_url}}/list/categories?search=sport",
 							"host": [
 								"{{base_url}}"
 							],
@@ -301,10 +311,95 @@
 							"query": [
 								{
 									"key": "search",
-									"value": ""
+									"value": "sport"
 								}
 							]
 						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "quote",
+			"item": [
+				{
+					"name": "list",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "4|kRVJSYvOYT5nVsXBpjb6H4VT3NoVF3F7kbygY4iG",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/quotes?length=15&notif=",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"quotes"
+							],
+							"query": [
+								{
+									"key": "length",
+									"value": "15"
+								},
+								{
+									"key": "notif",
+									"value": ""
+								}
+							]
+						},
+						"description": "pagination :\n\ndefautnya 1\n\n/api/v1/quote?length={int}\n\nuntuk detail notif saat di klik\n\nbody notif={id}\n\n/api/v1/quote?length={int}¬if={id}"
+					},
+					"response": []
+				},
+				{
+					"name": "share",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "4|kRVJSYvOYT5nVsXBpjb6H4VT3NoVF3F7kbygY4iG",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/quotes/share/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"quotes",
+								"share",
+								"1"
+							]
+						},
+						"description": "/api/v1/quote/share/{id_quote}"
 					},
 					"response": []
 				}

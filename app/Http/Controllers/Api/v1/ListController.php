@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api\v1;
 
+use App\Models\Icon;
 use App\Models\Theme;
 use App\Models\Topic;
 use App\Models\Category;
@@ -11,6 +12,16 @@ use App\Http\Controllers\Controller;
 
 class ListController extends Controller
 {
+    public function icons()
+    {
+        $data = Icon::with('image')->where('status', 2)->get();
+
+        return response()->json([
+            'status' => 'success',
+            'data' => $data
+        ], 200);
+    }
+    
     public function topics()
     {
         $data = Topic::where('status', 2)->get();

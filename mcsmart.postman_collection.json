@@ -255,6 +255,30 @@
 					"response": []
 				},
 				{
+					"name": "icon",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/list/icons",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"list",
+								"icons"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "theme",
 					"request": {
 						"method": "GET",
@@ -726,6 +750,11 @@
 								{
 									"key": "purchasely_id",
 									"value": "1234",
+									"type": "text"
+								},
+								{
+									"key": "icon",
+									"value": "2",
 									"type": "text"
 								}
 							]

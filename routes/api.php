@@ -38,6 +38,7 @@ Route::group(
         'name' => 'list.'
     ],
     function() {
+        Route::get('/icons', [ListController::class, 'icons'])->name('icons');
         Route::get('/topics', [ListController::class, 'topics'])->name('topics');
         Route::get('/themes', [ListController::class, 'themes'])->name('themes');
         Route::get('/categories', [ListController::class, 'categories'])->name('categories');

@@ -12,7 +12,7 @@ class UserProfileController extends Controller
 {
     public function show()
     {
-        $user = User::with('schedule','topics','themes', 'categories','subscription')
+        $user = User::with('icon','schedule','topics','themes', 'categories','subscription')
             ->find(auth('sanctum')->user()->id);
 
         return response()->json([
@@ -24,6 +24,11 @@ class UserProfileController extends Controller
     public function update(Request $request)
     {
         $user = User::find(auth('sanctum')->user()->id);
+
+        if ($request->has('icon')) {
+            $user->icon_id = $request->icon;
+            $user->update();
+        }
 
         if ($request->has('name')) {
             $user->name = $request->name;

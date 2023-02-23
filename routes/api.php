@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\v1\UserThemeController;
 use App\Http\Controllers\Api\v1\UserRatingController;
 use App\Http\Controllers\Api\v1\UserProfileController;
 use App\Http\Controllers\Api\v1\UserCategoryController;
+use App\Http\Controllers\Api\v1\UserCollectionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -67,6 +68,23 @@ Route::group(
     function() {
         Route::get('/', [UserProfileController::class, 'show'])->name('show');
         Route::patch('/', [UserProfileController::class, 'update'])->name('update');
+    }
+);
+
+Route::group(
+    [
+        'middleware' => 'auth:sanctum',
+        'prefix' => 'v1/collection',
+        'name' => 'collection.'
+    ],
+    function() {
+        Route::get('/', [UserCollectionController::class, 'index'])->name('index');
+        Route::get('/{id}', [UserCollectionController::class, 'show'])->name('show');
+        Route::post('/', [UserCollectionController::class, 'store'])->name('store');
+        Route::patch('/{id}', [UserCollectionController::class, 'update'])->name('update');
+        Route::delete('/{id}', [UserCollectionController::class, 'destroy'])->name('destroy');
+        Route::post('/quote/{collection}/{quote}', [UserCollectionController::class, 'storeQuote'])->name('quote.store');
+        Route::delete('/quote/{collection}/{quote}', [UserCollectionController::class, 'destroyQuote'])->name('quote.destroy');
     }
 );
 

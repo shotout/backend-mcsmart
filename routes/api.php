@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\v1\AuthController;
 use App\Http\Controllers\Api\v1\ListController;
 use App\Http\Controllers\Api\v1\QuoteController;
+use App\Http\Controllers\Api\v1\UserLikeController;
 use App\Http\Controllers\Api\v1\UserThemeController;
 use App\Http\Controllers\Api\v1\UserRatingController;
 use App\Http\Controllers\Api\v1\UserProfileController;
@@ -119,5 +120,19 @@ Route::group(
     function() {
         Route::get('/', [QuoteController::class, 'index'])->name('index');
         Route::post('/share/{id}', [QuoteController::class, 'share'])->name('share');
+    }
+);
+
+Route::group(
+    [
+        'middleware' => 'auth:sanctum',
+        'prefix' => 'v1/like',
+        'name' => 'like.'
+    ],
+    function() {
+        Route::get('/', [UserLikeController::class, 'index'])->name('index');
+        Route::post('/{id}', [UserLikeController::class, 'store'])->name('store');
+        Route::delete('/{id}', [UserLikeController::class, 'destroy'])->name('destroy');
+
     }
 );

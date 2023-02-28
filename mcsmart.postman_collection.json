@@ -411,7 +411,7 @@
 								}
 							]
 						},
-						"description": "pagination :\n\ndefautnya 1\n\n/api/v1/quote?length={int}\n\nuntuk detail notif saat di klik\n\nbody notif={id}\n\n/api/v1/quote?length={int}¬if={id}"
+						"description": "pagination :\n\ndefautnya 1\n\n/api/v1/quotes?length={int}\n\nuntuk detail notif saat di klik\n\nbody notif={id}\n\n/api/v1/quote?length={int}¬if={id}"
 					},
 					"response": []
 				},
@@ -811,7 +811,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "1|MV4bOG56JPwMPmLei2liDJ6HRuZu6aTmQSpxOI7r",
+									"value": "1|lzM1ONjEpxLQhd59bTvg5wenwNcZmCEIy5FCR8Xp",
 									"type": "string"
 								}
 							]
@@ -848,7 +848,7 @@
 								}
 							]
 						},
-						"description": "defaultnya /api/v1/user/collection/{id_collection}\n\npagination :\n\ndefaultnya 10\n\nlength={int}\n\nsearching :\n\ndefaultnya kosong\n\nsearch={keyword}"
+						"description": "defaultnya /api/v1/collection/{id_collection}\n\npagination :\n\ndefaultnya 10\n\nlength={int}\n\nsearching :\n\ndefaultnya kosong\n\nsearch={keyword}"
 					},
 					"response": []
 				},
@@ -980,7 +980,7 @@
 								"1"
 							]
 						},
-						"description": "/api/v1/user/collection/{id_collection}\n\nbody :\n\nname = {nama collection}"
+						"description": "/api/v1/collection/{id_collection}\n\nbody :\n\nname = {nama collection}"
 					},
 					"response": []
 				},
@@ -1061,7 +1061,7 @@
 								"1"
 							]
 						},
-						"description": "/api/v1/user/add-quote/{id_collection}/{id_quote}"
+						"description": "/api/v1/collection/quote/{id_collection}/{id_quote}"
 					},
 					"response": []
 				},
@@ -1098,7 +1098,144 @@
 								"1"
 							]
 						},
-						"description": "/api/v1/user/add-quote/{id_collection}/{id_quote}"
+						"description": "/api/v1/collection/quote/{id_collection}/{id_quote}"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "like quote",
+			"item": [
+				{
+					"name": "like or dislike quote",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "2|FheBpAJYRtdxXVSmewAD3mAkGzr2GJR0vErSP6dl",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "type",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/like/4",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"like",
+								"4"
+							]
+						},
+						"description": "api/v1/like/{id}\n\nparameter id adalah id quote nya\n\nbody nya :\n\ntype 1 untuk like\n\ntype 2 untuk dislike"
+					},
+					"response": []
+				},
+				{
+					"name": "list",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "2|FheBpAJYRtdxXVSmewAD3mAkGzr2GJR0vErSP6dl",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/like?length=10&column=id&dir=desc&search=",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"like"
+							],
+							"query": [
+								{
+									"key": "length",
+									"value": "10"
+								},
+								{
+									"key": "column",
+									"value": "id"
+								},
+								{
+									"key": "dir",
+									"value": "desc"
+								},
+								{
+									"key": "search",
+									"value": ""
+								}
+							]
+						},
+						"description": "defaultnya api/v1/like\n\npagination :\n\ndefaultnya 10\n\nlength={int}\n\nquery string :\n\ndefaultnya newest\n\na-z column=title&dir=asc\n\nz-a column=title&dir=desc\n\nnewest column=id&dir=desc\n\noldest column=id&dir=asc\n\nsearching :\n\ndefaultnya kosong\n\nsearch={keyword}\n\nsearch=love"
+					},
+					"response": []
+				},
+				{
+					"name": "delete like quote",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "2|FheBpAJYRtdxXVSmewAD3mAkGzr2GJR0vErSP6dl",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/like/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"like",
+								"1"
+							]
+						},
+						"description": "api/v1/like/{id}\n\nparameter id adalah id quote nya"
 					},
 					"response": []
 				}

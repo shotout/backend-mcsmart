@@ -10,6 +10,7 @@ use App\Http\Controllers\Api\v1\UserThemeController;
 use App\Http\Controllers\Api\v1\UserRatingController;
 use App\Http\Controllers\Api\v1\UserProfileController;
 use App\Http\Controllers\Api\v1\UserCategoryController;
+use App\Http\Controllers\Api\v1\UserPastQuoteController;
 use App\Http\Controllers\Api\v1\UserCollectionController;
 
 /*
@@ -134,5 +135,18 @@ Route::group(
         Route::post('/{id}', [UserLikeController::class, 'store'])->name('store');
         Route::delete('/{id}', [UserLikeController::class, 'destroy'])->name('destroy');
 
+    }
+);
+
+Route::group(
+    [
+        'middleware' => 'auth:sanctum',
+        'prefix' => 'v1/past-quote',
+        'name' => 'past-quote.'
+    ],
+    function() {
+        Route::get('/', [UserPastQuoteController::class, 'index'])->name('index');
+        Route::post('/{id}', [UserPastQuoteController::class, 'store'])->name('store');
+        Route::delete('/{id}', [UserPastQuoteController::class, 'destroy'])->name('destroy');
     }
 );

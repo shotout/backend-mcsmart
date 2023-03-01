@@ -1349,6 +1349,45 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "setting",
+			"item": [
+				{
+					"name": "paywall",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "3|Ow11ZCOuxpcmVm5dK3Tmjino8bfzIaPVFk5Y59WB",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/setting/paywall",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"setting",
+								"paywall"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"event": [

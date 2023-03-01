@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\v1\AuthController;
 use App\Http\Controllers\Api\v1\ListController;
 use App\Http\Controllers\Api\v1\QuoteController;
+use App\Http\Controllers\Api\v1\SettingController;
 use App\Http\Controllers\Api\v1\UserLikeController;
 use App\Http\Controllers\Api\v1\UserThemeController;
 use App\Http\Controllers\Api\v1\UserRatingController;
@@ -148,5 +149,16 @@ Route::group(
         Route::get('/', [UserPastQuoteController::class, 'index'])->name('index');
         Route::post('/{id}', [UserPastQuoteController::class, 'store'])->name('store');
         Route::delete('/{id}', [UserPastQuoteController::class, 'destroy'])->name('destroy');
+    }
+);
+
+Route::group(
+    [
+        'middleware' => 'auth:sanctum',
+        'prefix' => 'v1/setting',
+        'name' => 'setting.'
+    ],
+    function() {
+        Route::get('/paywall', [SettingController::class, 'paywall'])->name('paywall');
     }
 );

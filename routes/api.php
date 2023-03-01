@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\v1\ListController;
 use App\Http\Controllers\Api\v1\QuoteController;
 use App\Http\Controllers\Api\v1\SettingController;
 use App\Http\Controllers\Api\v1\UserLikeController;
+use App\Http\Controllers\Api\v1\UserNotifController;
 use App\Http\Controllers\Api\v1\UserThemeController;
 use App\Http\Controllers\Api\v1\UserRatingController;
 use App\Http\Controllers\Api\v1\UserProfileController;
@@ -160,5 +161,16 @@ Route::group(
     ],
     function() {
         Route::get('/paywall', [SettingController::class, 'paywall'])->name('paywall');
+    }
+);
+
+Route::group(
+    [
+        'middleware' => 'auth:sanctum',
+        'prefix' => 'v1/notif',
+        'name' => 'notif.'
+    ],
+    function() {
+        Route::get('/', [UserNotifController::class, 'index'])->name('index');
     }
 );

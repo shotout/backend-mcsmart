@@ -1388,6 +1388,50 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "notif",
+			"item": [
+				{
+					"name": "list",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "3|Ow11ZCOuxpcmVm5dK3Tmjino8bfzIaPVFk5Y59WB",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/notif?length=1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"notif"
+							],
+							"query": [
+								{
+									"key": "length",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"event": [

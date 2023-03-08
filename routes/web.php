@@ -14,5 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    // \App\Jobs\QuoteNotif::dispatch()->onQueue(env('SUPERVISOR'));
+    // \App\Jobs\RandomQuote::dispatch()->onQueue(env('SUPERVISOR'));
+    // return "success";
     return view('welcome');
 });

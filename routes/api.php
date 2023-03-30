@@ -10,6 +10,7 @@ use App\Http\Controllers\Api\v1\UserLikeController;
 use App\Http\Controllers\Api\v1\UserNotifController;
 use App\Http\Controllers\Api\v1\UserThemeController;
 use App\Http\Controllers\Api\v1\UserRatingController;
+use App\Http\Controllers\Api\v1\UserRepeatController;
 use App\Http\Controllers\Api\v1\UserProfileController;
 use App\Http\Controllers\Api\v1\UserCategoryController;
 use App\Http\Controllers\Api\v1\UserPastQuoteController;
@@ -172,5 +173,18 @@ Route::group(
     ],
     function() {
         Route::get('/', [UserNotifController::class, 'index'])->name('index');
+    }
+);
+
+Route::group(
+    [
+        'middleware' => 'auth:sanctum',
+        'prefix' => 'v1/repeat',
+        'name' => 'repeat.'
+    ],
+    function() {
+        Route::get('/', [UserRepeatController::class, 'index'])->name('index');
+        Route::post('/{id}', [UserRepeatController::class, 'store'])->name('store');
+        Route::delete('/{id}', [UserRepeatController::class, 'destroy'])->name('destroy');
     }
 );

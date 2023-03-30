@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "7be52752-bd15-416c-bb09-d6b257daa7a0",
+		"_postman_id": "a6456188-236d-4d49-9a5c-5441354531a5",
 		"name": "mcsmart",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "12074833"
@@ -1426,6 +1426,119 @@
 									"key": "length",
 									"value": "1"
 								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "repeat",
+			"item": [
+				{
+					"name": "add",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "2|FheBpAJYRtdxXVSmewAD3mAkGzr2GJR0vErSP6dl",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/repeat/3",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"repeat",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "2|FheBpAJYRtdxXVSmewAD3mAkGzr2GJR0vErSP6dl",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/repeat?search=",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"repeat"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": ""
+								}
+							]
+						},
+						"description": "api/v1/repeat?search=\n\nquery string search default kosong, klw isi berati mode search"
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "2|FheBpAJYRtdxXVSmewAD3mAkGzr2GJR0vErSP6dl",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/repeat/2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"repeat",
+								"2"
 							]
 						}
 					},

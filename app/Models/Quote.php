@@ -16,6 +16,11 @@ class Quote extends Model
         return $this->hasOne('\App\Models\UserQuote')->where('user_id', auth('sanctum')->user()->id);
     }
 
+    public function repeat()
+    {
+        return $this->hasOne('\App\Models\UserRepeat')->where('user_id', auth('sanctum')->user()->id);
+    }
+
     public function counterLike()
     {
         return $this->hasMany('\App\Models\UserQuote')

@@ -32,7 +32,7 @@ class QuoteController extends Controller
             $dir = 'asc';
         }
 
-        $query = Quote::with('like')->where('status', 2)->orderBy($column, $dir);
+        $query = Quote::with('like','repeat')->where('status', 2)->orderBy($column, $dir);
                     
         // pagination
         $data = $query->paginate($length);

@@ -58,7 +58,6 @@ class QuoteNotif implements ShouldQueue
                             if ($user->schedule->timer) {
                                 if (in_array(now()->setTimezone($user->schedule->timezone)->format('H:i'), $user->schedule->timer)) {
 
-                                    // \Carbon\Carbon::now()->setTimezone('Asia/Jakarta')->format('H:i:s');
                                     Log::info('ada ...');
 
                                     $data = [

@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers\Api\v1;
 
+use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Quote;
+use App\Models\MyQuote;
 use App\Models\PastQuote;
 use App\Models\UserRepeat;
 use App\Models\Subscription;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Carbon\Carbon;
 
 class QuoteController extends Controller
 {
@@ -45,6 +46,12 @@ class QuoteController extends Controller
             ->whereNotIn('id', $up)
             ->where('status', 2)
             ->orderBy($column, $dir);
+
+        // my quote
+        $myQuotes = MyQuote::where('user_id', auth('sanctum')->user()->id)->first();
+        if ($myQuotes) {
+            $query->whereIn('id', $myQuotes->quotes);
+        }
                     
         // pagination
         $data = $query->paginate($length);

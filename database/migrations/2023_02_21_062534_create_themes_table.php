@@ -41,6 +41,7 @@ return new class extends Migration
 
         DB::table('themes')->insert([
             [
+                "group_id" => null,
                 "name" => "Random",
                 "is_free" => true,
                 "font_family" => null,
@@ -53,6 +54,7 @@ return new class extends Migration
                 "created_at" => now()
             ],
             [
+                "group_id" => 4,
                 "name" => "Theme 1",
                 "is_free" => false,
                 "font_family" => "Montserrat-SemiBold",
@@ -65,6 +67,7 @@ return new class extends Migration
                 "created_at" => now()
             ],
             [
+                "group_id" => 4,
                 "name" => "Theme 2",
                 "is_free" => false,
                 "font_family" => "Lucida Grande",
@@ -77,6 +80,7 @@ return new class extends Migration
                 "created_at" => now()
             ],
             [
+                "group_id" => 1,
                 "name" => "Theme 3",
                 "is_free" => false,
                 "font_family" => "Krona One",
@@ -89,6 +93,7 @@ return new class extends Migration
                 "created_at" => now()
             ],
             [
+                "group_id" => 2,
                 "name" => "Theme 4",
                 "is_free" => false,
                 "font_family" => "Lobster",
@@ -101,6 +106,7 @@ return new class extends Migration
                 "created_at" => now()
             ],
             [
+                "group_id" => 4,
                 "name" => "Theme 5",
                 "is_free" => false,
                 "font_family" => "FjallaOne-Regular",
@@ -113,6 +119,7 @@ return new class extends Migration
                 "created_at" => now()
             ],
             [
+                "group_id" => 6,
                 "name" => "Theme 6",
                 "is_free" => false,
                 "font_family" => "Anton",
@@ -125,6 +132,7 @@ return new class extends Migration
                 "created_at" => now()
             ],
             [
+                "group_id" => 5,
                 "name" => "Theme 7",
                 "is_free" => false,
                 "font_family" => "Abril Fatface",

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\v1;
 
 use App\Models\Icon;
 use App\Models\Link;
+use App\Models\Group;
 use App\Models\Theme;
 use App\Models\Topic;
 use App\Models\Category;
@@ -35,8 +36,8 @@ class ListController extends Controller
 
     public function themes()
     {
-        $data = Theme::with('background')->where('status', 2)->get();
-        // $data = Group::with('themes')->where('flag', 2)->where('status', 2)->get();
+        // $data = Theme::with('background')->where('status', 2)->get();
+        $data = Group::with('themes')->where('flag', 2)->where('status', 2)->get();
 
         return response()->json([
             'status' => 'success',

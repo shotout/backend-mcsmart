@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "a6456188-236d-4d49-9a5c-5441354531a5",
+		"_postman_id": "fcd56174-a78c-436b-bad4-13f4ed803f99",
 		"name": "mcsmart",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "12074833"
@@ -1539,6 +1539,87 @@
 							"path": [
 								"repeat",
 								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "admob",
+			"item": [
+				{
+					"name": "webhook",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "custom_data",
+									"value": "theme_1",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "custom_data",
+									"value": "quote_1",
+									"type": "text"
+								},
+								{
+									"key": "custom_data",
+									"value": "category_4",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "user_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "key_id",
+									"value": "123",
+									"type": "text"
+								},
+								{
+									"key": "signature",
+									"value": "123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/admob?user_id=1&custom_data=icon_2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admob"
+							],
+							"query": [
+								{
+									"key": "user_id",
+									"value": "1"
+								},
+								{
+									"key": "custom_data",
+									"value": "icon_2"
+								}
 							]
 						}
 					},

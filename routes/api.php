@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\v1\AuthController;
 use App\Http\Controllers\Api\v1\ListController;
+use App\Http\Controllers\Api\v1\AdmobController;
 use App\Http\Controllers\Api\v1\QuoteController;
 use App\Http\Controllers\Api\v1\SettingController;
 use App\Http\Controllers\Api\v1\UserLikeController;
@@ -186,5 +187,15 @@ Route::group(
         Route::get('/', [UserRepeatController::class, 'index'])->name('index');
         Route::post('/{id}', [UserRepeatController::class, 'store'])->name('store');
         Route::delete('/{id}', [UserRepeatController::class, 'destroy'])->name('destroy');
+    }
+);
+
+Route::group(
+    [
+        'prefix' => 'v1/admob',
+        'name' => 'admob.'
+    ],
+    function() {
+        Route::get('/', [AdmobController::class, 'callback'])->name('callback');
     }
 );

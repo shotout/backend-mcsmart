@@ -128,4 +128,14 @@ class QuoteController extends Controller
             'data' => null
         ], 200);
     }
+
+    public function filter()
+    {
+        $data = Quote::where('show_onboarding', 1)->get();
+
+        return response()->json([
+            'status' => 'success',
+            'data' => $data
+        ], 200);
+    }
 }

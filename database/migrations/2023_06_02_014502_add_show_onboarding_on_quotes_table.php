@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('quotes', function (Blueprint $table) {
-            $table->boolean('show_onboarding')->default(false)->after('count_share');
+            $table->boolean('show_onboarding')->default(false)->after('status');
         });
     }
 

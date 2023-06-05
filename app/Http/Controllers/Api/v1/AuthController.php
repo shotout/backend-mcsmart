@@ -9,6 +9,7 @@ use App\Jobs\UserPool;
 use App\Models\Schedule;
 use App\Models\Subscription;
 use Illuminate\Http\Request;
+use App\Jobs\GenerateTimerAds;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
@@ -21,6 +22,13 @@ class AuthController extends Controller
         $user = User::where('device_id', $request->device_id)->first();
 
         if ($user) {
+            // reset notif ads count -------
+                $user->notif_ads_count = 0;
+                $user->update();
+
+                GenerateTimerAds::dispatch($user->id)->onQueue(env('SUPERVISOR'));
+            // ---------
+
             $token = $user->createToken('auth_token')->plainTextToken;
 
             $data = User::with('icon','schedule','topics','subscription','themes','categories')->find($user->id);

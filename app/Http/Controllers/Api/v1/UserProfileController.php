@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Schedule;
 use App\Jobs\GenerateTimer;
 use Illuminate\Http\Request;
+use App\Jobs\GenerateTimerAds;
 use App\Http\Controllers\Controller;
 
 class UserProfileController extends Controller
@@ -83,6 +84,14 @@ class UserProfileController extends Controller
         if ($request->has('notif_count')) {
             $user->notif_count = 0;
             $user->update();
+        }
+
+        // reset notif ads count
+        if ($request->has('notif_ads_count')) {
+            $user->notif_ads_count = 0;
+            $user->update();
+
+            GenerateTimerAds::dispatch($user->id)->onQueue(env('SUPERVISOR'));
         }
 
         return response()->json([

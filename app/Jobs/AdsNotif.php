@@ -34,7 +34,7 @@ class AdsNotif implements ShouldQueue
      */
     public function handle()
     {
-        $users = User::with('schedule','areas')->where('is_member', 0)->where('status', 2)->get();
+        $users = User::with('schedule')->where('is_member', 0)->where('status', 2)->get();
 
         foreach ($users as $user) {
             // if ($user->is_member == 0) {
@@ -52,7 +52,8 @@ class AdsNotif implements ShouldQueue
                         
                         $boxs = [
                             "name" => $user->name,
-                            "selected_goal" => $user->areas[0]->name
+                            "selected_goal" => "selected_goal"
+                            // "selected_goal" => $user->areas[0]->name
                         ];
 
                         foreach ($boxs as $key => $val) {

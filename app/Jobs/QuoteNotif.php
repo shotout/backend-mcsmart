@@ -52,71 +52,141 @@ class QuoteNotif implements ShouldQueue
             $descShort = substr($filterDesc, 0, 100);
 
             foreach ($users as $user) {
-                if ($user->subscription->plan_id != 5 || $user->subscription->type != 5) {
-                    if ($user->schedule->counter_notif < $user->schedule->often) {
-                        if ($user->schedule->timezone && now()->setTimezone($user->schedule->timezone)->format('H:i:s') >= $user->schedule->start && now()->setTimezone($user->schedule->timezone)->format('H:i:s') <= Carbon::parse($user->schedule->end)->addMinute(10)->format('H:i:s')) {
-                            if ($user->schedule->timer) {
-                                if (in_array(now()->setTimezone($user->schedule->timezone)->format('H:i'), $user->schedule->timer)) {
+                if ($user->schedule) {
+                    if ($user->subscription->plan_id != 5 || $user->subscription->type != 5) {
+                        if ($user->schedule->counter_notif < $user->schedule->often) {
+                            if ($user->schedule->timezone && now()->setTimezone($user->schedule->timezone)->format('H:i:s') >= $user->schedule->start && now()->setTimezone($user->schedule->timezone)->format('H:i:s') <= Carbon::parse($user->schedule->end)->addMinute(10)->format('H:i:s')) {
+                                if ($user->schedule->timer) {
+                                    if (in_array(now()->setTimezone($user->schedule->timezone)->format('H:i'), $user->schedule->timer)) {
 
-                                    Log::info('ada ...');
+                                        Log::info('ada ...');
 
-                                    $data = [
-                                        "to" => $user->fcm_token,
-                                        "data" => [
-                                            "id" => $quote->id,
-                                        ],
-                                        "notification" => [
-                                            "title" => $quote->author,
-                                            "body" => $descShort,  
-                                            "icon" => 'https://backend-api.mcsmartapp.com/assets/logos/logo.jpg',
-                                            // "image" => 'https://backend.nftdaily.app/image.png',
-                                            "sound" => "circle.mp3",
-                                            "badge" => $user->notif_count + 1
-                                        ]
-                                    ];
-                        
-                                    // Log::info($data);
-                        
-                                    $dataString = json_encode($data);
-                                
-                                    $headers = [
-                                        'Authorization: key=' . $SERVER_API_KEY,
-                                        'Content-Type: application/json',
-                                    ];
-                                
-                                    $ch = curl_init();
+                                        $data = [
+                                            "to" => $user->fcm_token,
+                                            "data" => [
+                                                "id" => $quote->id,
+                                            ],
+                                            "notification" => [
+                                                "title" => $quote->author,
+                                                "body" => $descShort,  
+                                                "icon" => 'https://backend-api.mcsmartapp.com/assets/logos/logo.jpg',
+                                                // "image" => 'https://backend.nftdaily.app/image.png',
+                                                "sound" => "circle.mp3",
+                                                "badge" => $user->notif_count + 1
+                                            ]
+                                        ];
                             
-                                    curl_setopt($ch, CURLOPT_URL, 'https://fcm.googleapis.com/fcm/send');
-                                    curl_setopt($ch, CURLOPT_POST, true);
-                                    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-                                    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-                                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-                                    curl_setopt($ch, CURLOPT_POSTFIELDS, $dataString);
-                                        
-                                    $response = curl_exec($ch);
-                                    Log::info($response);
-
-                                    // update user schedule
-                                    $schedule = Schedule::find($user->schedule->id);
-                                    if ($schedule) {
-                                        $schedule->counter_notif++;
-                                        $schedule->update();
-                                    }
-
-                                    // update user
-                                    $user->notif_count++;
-                                    $user->update();
+                                        // Log::info($data);
+                            
+                                        $dataString = json_encode($data);
                                     
+                                        $headers = [
+                                            'Authorization: key=' . $SERVER_API_KEY,
+                                            'Content-Type: application/json',
+                                        ];
+                                    
+                                        $ch = curl_init();
+                                
+                                        curl_setopt($ch, CURLOPT_URL, 'https://fcm.googleapis.com/fcm/send');
+                                        curl_setopt($ch, CURLOPT_POST, true);
+                                        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+                                        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+                                        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                                        curl_setopt($ch, CURLOPT_POSTFIELDS, $dataString);
+                                            
+                                        $response = curl_exec($ch);
+                                        Log::info($response);
+
+                                        // update user schedule
+                                        $schedule = Schedule::find($user->schedule->id);
+                                        if ($schedule) {
+                                            $schedule->counter_notif++;
+                                            $schedule->update();
+                                        }
+
+                                        // update user
+                                        $user->notif_count++;
+                                        $user->update();
+                                        
+                                    }
+                                }
+                            }
+                        } else {
+                            // reset schedule counter
+                            if ($user->schedule->timezone && now()->setTimezone($user->schedule->timezone)->format('H:i:s') >= '00:00:00' && now()->setTimezone($user->schedule->timezone)->format('H:i:s') <= '01:00:00') {
+                                $schedule = Schedule::find($user->schedule->id);
+                                if ($schedule) {
+                                    $schedule->counter_notif = 0;
+                                    $schedule->update();
                                 }
                             }
                         }
                     } else {
-                        // reset schedule counter
-                        if ($user->schedule->timezone && now()->setTimezone($user->schedule->timezone)->format('H:i:s') >= '00:00:00' && now()->setTimezone($user->schedule->timezone)->format('H:i:s') <= '01:00:00') {
-                            $schedule = Schedule::find($user->schedule->id);
-                            if ($schedule) {
-                                $schedule->counter_notif = 0;
-                                $schedule->update();
+                        if ($user->schedule->counter_notif < $user->schedule->often) {
+                            if ($user->schedule->timezone && now()->setTimezone($user->schedule->timezone)->format('H:i:s') >= $user->schedule->start && now()->setTimezone($user->schedule->timezone)->format('H:i:s') <= Carbon::parse($user->schedule->end)->addMinute(10)->format('H:i:s')) {
+                                if ($user->schedule->timer) {
+                                    if (in_array(now()->setTimezone($user->schedule->timezone)->format('H:i'), $user->schedule->timer)) {
+
+                                        Log::info('ada ...');
+
+                                        $data = [
+                                            "to" => $user->fcm_token,
+                                            "data" => [
+                                                "id" => $quote->id,
+                                            ],
+                                            "notification" => [
+                                                "title" => "New Fact unlocked 😎",
+                                                "body" => "Open McSmart to discover your new Fact now. Don't lose your progress! 💪🚀",
+                                                "icon" => 'https://backend-api.mcsmartapp.com/assets/logos/logo.jpg',
+                                                // "image" => 'https://backend.nftdaily.app/image.png',
+                                                "sound" => "circle.mp3",
+                                                "badge" => $user->notif_count + 1
+                                            ]
+                                        ];
+
+                                        // Log::info($data);
+
+                                        $dataString = json_encode($data);
+
+                                        $headers = [
+                                            'Authorization: key=' . $SERVER_API_KEY,
+                                            'Content-Type: application/json',
+                                        ];
+
+                                        $ch = curl_init();
+
+                                        curl_setopt($ch, CURLOPT_URL, 'https://fcm.googleapis.com/fcm/send');
+                                        curl_setopt($ch, CURLOPT_POST, true);
+                                        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+                                        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+                                        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                                        curl_setopt($ch, CURLOPT_POSTFIELDS, $dataString);
+
+                                        $response = curl_exec($ch);
+                                        Log::info($response);
+
+                                        // update user schedule
+                                        $schedule = Schedule::find($user->schedule->id);
+                                        if ($schedule) {
+                                            $schedule->counter_notif++;
+                                            $schedule->update();
+                                        }
+
+                                        // update user
+                                        $user->notif_count++;
+                                        $user->update();
+
+                                    }
+                                }
+                            }
+                        } else {
+                            // reset schedule counter
+                            if ($user->schedule->timezone && now()->setTimezone($user->schedule->timezone)->format('H:i:s') >= '00:00:00' && now()->setTimezone($user->schedule->timezone)->format('H:i:s') <= '01:00:00') {
+                                $schedule = Schedule::find($user->schedule->id);
+                                if ($schedule) {
+                                    $schedule->counter_notif = 0;
+                                    $schedule->update();
+                                }
                             }
                         }
                     }

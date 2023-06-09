@@ -21,6 +21,7 @@ class CreateMessagesTable extends Migration
             $table->string('name')->nullable();
             $table->integer('time')->nullable();
             $table->string('sendout_time')->nullable();
+            $table->string('offer')->nullable();
             $table->text('push_text')->nullable();
             $table->string('paywall')->nullable();
             $table->tinyInteger('status')->default(2);
@@ -42,7 +43,8 @@ class CreateMessagesTable extends Migration
                 "name" => "Push 1",
                 "time" => 10,
                 "sendout_time" => "10 mins after seeing the paywall for the first time",
-                "push_text" => "💪 Don't give up on your goal, [name]! Get 80% off on McSmart Premium Plan and reach your [selected_goal] goal faster. Get the mega deal now! 🚀",
+                "offer" => "-50% (USD10)",
+                "push_text" => "🏆 Keep pushing towards your learning goal, [name]! Get 50% off on the McSmart Premium Plan and accelerate your journey towards being a Knowledge King - get the mega deal now! 🔥",
                 "created_at" => now()
             ],
             [
@@ -50,7 +52,8 @@ class CreateMessagesTable extends Migration
                 "name" => "Push 2",
                 "time" => 250,
                 "sendout_time" => "4 h after push 1",
-                "push_text" => "🎉 Congratulations, [name]! You're on the right track to reach your [selected_goal] goal. Get 80% off on McSmart Premium Plan now and accelerate your progress. Get the mega deal now! 💥",
+                "offer" => "-50% (USD10)",
+                "push_text" => "Unlimited Facts, Themes and Categories with no advertising! Get McSmart Premium now with 50% discount! 😎",
                 "created_at" => now()
             ],
             [
@@ -58,7 +61,8 @@ class CreateMessagesTable extends Migration
                 "name" => "Push 3",
                 "time" => 1450,
                 "sendout_time" => "24h after push 1",
-                "push_text" => "🏆 Keep pushing towards your [selected_goal] goal, [name]! Get 80% off on McSmart Premium Plan and accelerate your journey towards better health. Get the mega deal now! 🔥",
+                "offer" => "-75% (USD5)",
+                "push_text" => "🎉 Congratulations, [name]! You're on the right track to achieve your learning goals. Get 75% off on the McSmart Premium Plan now and accelerate your progress. Get the mega deal now! 💥",
                 "created_at" => now()
             ],
             [
@@ -66,7 +70,8 @@ class CreateMessagesTable extends Migration
                 "name" => "Push 4",
                 "time" => 1690,
                 "sendout_time" => "24h after push 2",
-                "push_text" => "🚀 Don't let anything stop you, [name]! Get 80% off on McSmart Premium Plan and achieve your [selected_goal] goal faster. Get the mega deal now! 💯",
+                "offer" => "-75% (USD5)",
+                "push_text" => "⚡️Hurry up! Get your 75% discount offer for McSmart Premium now - just for you! 😍",
                 "created_at" => now()
             ],
             [
@@ -74,7 +79,8 @@ class CreateMessagesTable extends Migration
                 "name" => "Push 5",
                 "time" => 2890,
                 "sendout_time" => "24h after push 3",
-                "push_text" => "⚡️ Keep up the momentum, [name]! Get 80% off on McSmart Premium Plan and speed up your progress towards your [selected_goal] goal. Get the mega deal now!",
+                "offer" => "-75% (USD5)",
+                "push_text" => "💪 Don't give up on your progress, [name]! Get 75% off on the McSmart Premium Plan and unlock your full potential. Get the mega deal now! 🚀",
                 "created_at" => now()
             ],
             [
@@ -82,7 +88,8 @@ class CreateMessagesTable extends Migration
                 "name" => "Push 6",
                 "time" => 3130,
                 "sendout_time" => "24h after push 4",
-                "push_text" => "💪 Keep up the great work, [name]! Get 80% off on McSmart Premium Plan and reach your [selected_goal] goal with ease. Get the mega deal now! 🎉",
+                "offer" => "-75% (USD5)",
+                "push_text" => "⚡️Still not sure about McSmart Premium? Get 75% discount only now and unlock the full potential! 🔥",
                 "created_at" => now()
             ],
             [
@@ -90,7 +97,8 @@ class CreateMessagesTable extends Migration
                 "name" => "Push 7",
                 "time" => 4330,
                 "sendout_time" => "24h after push 5",
-                "push_text" => "🏋️‍♀️ Don't let anything hold you back, [name]! Get 80% off on McSmart Premium Plan and accelerate your fitness journey. Get the mega deal now! 🔥",
+                "offer" => "-75% (USD5)",
+                "push_text" => "🚀 Don't let anything stop you, [name]! Get 75% off on the McSmart Premium Plan and achieve your learning goals faster. Get the mega deal now! 💯",
                 "created_at" => now()
             ],
             [
@@ -98,7 +106,8 @@ class CreateMessagesTable extends Migration
                 "name" => "Push 8",
                 "time" => 4570,
                 "sendout_time" => "24h after push 6",
-                "push_text" => "🚀 The finish line is within reach, [name]! Get 80% off on McSmart Premium Plan and achieve your [selected_goal] goal in no time. Get the mega deal now! 💯",
+                "offer" => "-75% (USD5)",
+                "push_text" => "🎉 Get 75% discount on McSmart Premium now - be quick! 💥",
                 "created_at" => now()
             ],
             [
@@ -106,7 +115,8 @@ class CreateMessagesTable extends Migration
                 "name" => "Push 9",
                 "time" => 5770,
                 "sendout_time" => "24h after push 7",
-                "push_text" => "🎯 You're closer than ever to your [selected_goal] goal, [name]! Get 80% off on McSmart Premium Plan and speed up your progress. Get the mega deal now! 🔥",
+                "offer" => "-75% (USD5)",
+                "push_text" => "🏋️‍♀️ Don't let anything hold you back, [name]! Get 75% off on the McSmart Premium Plan and accelerate your journey. Get the mega deal now! 🔥",
                 "created_at" => now()
             ],
             [
@@ -114,7 +124,8 @@ class CreateMessagesTable extends Migration
                 "name" => "Push 10",
                 "time" => 6010,
                 "sendout_time" => "24h after push 8",
-                "push_text" => "🌟 Keep shining, [name]! Get 80% off on McSmart Premium Plan and make your way towards your [selected_goal] goal. Get the mega deal now! 🎉",
+                "offer" => "-75% (USD5)",
+                "push_text" => "😍 Enjoying McSmart? Upgrade to the Full Ad-Free version with unlimited Facts, Themes, Categories and more - now with 75% off! 🚀",
                 "created_at" => now()
             ],
             [
@@ -122,7 +133,8 @@ class CreateMessagesTable extends Migration
                 "name" => "Push 11",
                 "time" => 7210,
                 "sendout_time" => "24h after push 9",
-                "push_text" => "💪 Don't give up on your goal, [name]! Get 80% off on McSmart Premium Plan and reach your [selected_goal] goal faster. Get the mega deal now! 🚀",
+                "offer" => "-75% (USD5)",
+                "push_text" => "🌟 Keep shining, [name]! Get 75% off on the McSmart Premium Plan and make your way towards your learning goals. Get the mega deal now! 🎉",
                 "created_at" => now()
             ],
             [
@@ -130,7 +142,8 @@ class CreateMessagesTable extends Migration
                 "name" => "Push 12",
                 "time" => 7450,
                 "sendout_time" => "24h after push 10",
-                "push_text" => "🎉 Congratulations, [name]! You're on the right track to reach your [selected_goal] goal. Get 80% off on McSmart Premium Plan now and accelerate your progress. Get the mega deal now! 💥",
+                "offer" => "-75% (USD5)",
+                "push_text" => "💪 Great progress! Achieve your Goals even quicker with McSmart Premium - only now with 75% discount! 😍",
                 "created_at" => now()
             ],
             [
@@ -138,7 +151,8 @@ class CreateMessagesTable extends Migration
                 "name" => "Push 13",
                 "time" => 8650,
                 "sendout_time" => "24h after push 11",
-                "push_text" => "🏆 Keep pushing towards your [selected_goal] goal, [name]! Get 80% off on McSmart Premium Plan and accelerate your journey towards better health. Get the mega deal now! 🔥",
+                "offer" => "-75% (USD5)",
+                "push_text" => "🏆 Keep pushing towards your learning goal, [name]! Get 75% off on the McSmart Premium Plan and accelerate your journey towards being a Knowledge King - get the mega deal now! 🔥",
                 "created_at" => now()
             ],
             [
@@ -146,7 +160,8 @@ class CreateMessagesTable extends Migration
                 "name" => "Push 14",
                 "time" => 8890,
                 "sendout_time" => "24h after push 12",
-                "push_text" => "🚀 Don't let anything stop you, [name]! Get 80% off on McSmart Premium Plan and achieve your [selected_goal] goal faster. Get the mega deal now! 💯",
+                "offer" => "-75% (USD5)",
+                "push_text" => "😎 Unlimited Facts, Themes and Categories with no advertising! Get McSmart Premium now with 75% discount! 🔥",
                 "created_at" => now()
             ],
         ]);

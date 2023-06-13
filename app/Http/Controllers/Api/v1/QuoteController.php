@@ -129,9 +129,15 @@ class QuoteController extends Controller
         ], 200);
     }
 
-    public function filter()
+    public function filter(Request $request)
     {
-        $data = Quote::where('show_onboarding', 1)->get();
+        if ($request->has('category') && $request->category != '') {
+            $data = Quote::where('show_onboarding', 1)
+                ->where('category_id', $request->category)
+                ->get();
+        } else {
+            $data = Quote::where('show_onboarding', 1)->get();
+        }
 
         return response()->json([
             'status' => 'success',

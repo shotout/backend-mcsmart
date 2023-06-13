@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "639b5dca-1a07-4f43-b9f7-1314c8b86799",
+		"_postman_id": "2b2aa6cf-5abe-49ba-a793-684a066461d4",
 		"name": "mcsmart",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "12074833"
@@ -430,16 +430,22 @@
 							}
 						],
 						"url": {
-							"raw": "{{base_url}}/quotes/filter",
+							"raw": "{{base_url}}/quotes/filter?category=",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
 								"quotes",
 								"filter"
+							],
+							"query": [
+								{
+									"key": "category",
+									"value": ""
+								}
 							]
 						},
-						"description": "pagination :\n\ndefautnya 1\n\n/api/v1/quotes?length={int}\n\nuntuk detail notif saat di klik\n\nbody notif={id}\n\n/api/v1/quote?length={int}¬if={id}"
+						"description": "category= 3 s.d 12"
 					},
 					"response": []
 				},

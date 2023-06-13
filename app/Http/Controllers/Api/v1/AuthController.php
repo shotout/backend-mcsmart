@@ -188,4 +188,20 @@ class AuthController extends Controller
             ], 201); 
         } 
     }
+
+    // public function categoryResult(Request $request)
+    // {
+    //     $request->validate([
+    //         'impress_friends' => 'required',
+    //         'impress_business' => 'required',
+    //         'impress_children' => 'required',
+    //         'impress_members' => 'required',
+    //     ]);
+
+    //     // response
+    //     return response()->json([
+    //         'status' => 'success',
+    //         'data' => null
+    //     ], 201); 
+    // }
 }

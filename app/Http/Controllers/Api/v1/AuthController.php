@@ -50,7 +50,7 @@ class AuthController extends Controller
     {
         $request->validate([
             'device_id' => 'required',
-            'topics' => 'required',
+            // 'topics' => 'required',
         ]);
 
         $isRegister = User::where('device_id', $request->device_id)->first();

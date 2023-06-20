@@ -71,6 +71,7 @@ class ListController extends Controller
                         ->toArray();
 
                     $data['alternative'] = Category::with('icon')
+                        ->whereNotIn('id', [1,2])
                         ->whereNotIn('id', $myCategory)
                         ->where('status', 2)
                         ->get();

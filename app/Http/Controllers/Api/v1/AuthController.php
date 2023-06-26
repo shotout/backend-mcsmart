@@ -189,6 +189,28 @@ class AuthController extends Controller
         } 
     }
 
+    public function delete(Request $request)
+    {
+        $request->validate([
+            'device_id' => 'required',
+        ]);
+
+        $user = User::where('device_id', $request->device_id)->first();
+        if ($user) {
+            $user->delete();
+
+            return response()->json([
+                'status' => 'success',
+                'message' => 'user deleted'
+            ], 200); 
+        }
+
+        return response()->json([
+            'status' => 'failed',
+            'message' => 'device not register'
+        ], 400); 
+    }
+
     // public function categoryResult(Request $request)
     // {
     //     $request->validate([

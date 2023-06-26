@@ -199,3 +199,25 @@ Route::group(
         Route::get('/', [AdmobController::class, 'callback'])->name('callback');
     }
 );
+
+Route::group(
+    [
+        'middleware' => 'auth:sanctum',
+        'prefix' => 'v1/subscription',
+        'name' => 'subscription.'
+    ],
+    function() {
+        Route::get('/', [SubscriptionsController::class, 'index'])->name('index');
+        Route::post('/update', [SubscriptionsController::class, 'subscribe'])->name('subscribe');
+    }
+);
+
+Route::group(
+    [
+        'prefix' => 'v1/purchasely',
+        'name' => 'purchasely.'
+    ],
+    function() {
+        Route::post('/', [PurchaselyController::class, 'index'])->name('purchasely');
+    }
+);

@@ -9,6 +9,7 @@ use App\Jobs\UserPool;
 use App\Models\Schedule;
 use App\Models\Subscription;
 use Illuminate\Http\Request;
+use App\Jobs\GenerateTimerAds;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
@@ -21,6 +22,13 @@ class AuthController extends Controller
         $user = User::where('device_id', $request->device_id)->first();
 
         if ($user) {
+            // reset notif ads count -------
+                $user->notif_ads_count = 0;
+                $user->update();
+
+                GenerateTimerAds::dispatch($user->id)->onQueue(env('SUPERVISOR'));
+            // ---------
+
             $token = $user->createToken('auth_token')->plainTextToken;
 
             $data = User::with('icon','schedule','topics','subscription','themes','categories')->find($user->id);
@@ -42,7 +50,7 @@ class AuthController extends Controller
     {
         $request->validate([
             'device_id' => 'required',
-            'topics' => 'required',
+            // 'topics' => 'required',
         ]);
 
         $isRegister = User::where('device_id', $request->device_id)->first();
@@ -180,4 +188,20 @@ class AuthController extends Controller
             ], 201); 
         } 
     }
+
+    // public function categoryResult(Request $request)
+    // {
+    //     $request->validate([
+    //         'impress_friends' => 'required',
+    //         'impress_business' => 'required',
+    //         'impress_children' => 'required',
+    //         'impress_members' => 'required',
+    //     ]);
+
+    //     // response
+    //     return response()->json([
+    //         'status' => 'success',
+    //         'data' => null
+    //     ], 201); 
+    // }
 }

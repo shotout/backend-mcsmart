@@ -99,8 +99,26 @@ class UserPool implements ShouldQueue
                 }
                 // -------------------------
 
+                // impress_members ------------
+                if ($this->user->impress_members) {
+                    $pc = PercentageCategory::where('percentage_id', 4)
+                        ->where('category_id', $category->id)
+                        ->first();
+                    if ($pc) {
+                        $pool->impress_members = $pc->yes;
+                    }
+                } else {
+                    $pc = PercentageCategory::where('percentage_id', 4)
+                        ->where('category_id', $category->id)
+                        ->first();
+                    if ($pc) {
+                        $pool->impress_members = $pc->no;
+                    }
+                }
+                // -------------------------
+
                 $pool->save();
-                $pool->total = $pool->impress_friends + $pool->impress_business + $pool->impress_children;
+                $pool->total = $pool->impress_friends + $pool->impress_business + $pool->impress_children + $pool->impress_members;
                 $pool->update();
             }
         }

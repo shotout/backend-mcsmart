@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "fcd56174-a78c-436b-bad4-13f4ed803f99",
+		"_postman_id": "2b2aa6cf-5abe-49ba-a793-684a066461d4",
 		"name": "mcsmart",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "12074833"
@@ -412,6 +412,40 @@
 							]
 						},
 						"description": "pagination :\n\ndefautnya 1\n\n/api/v1/quotes?length={int}\n\nuntuk detail notif saat di klik\n\nbody notif={id}\n\n/api/v1/quote?length={int}¬if={id}"
+					},
+					"response": []
+				},
+				{
+					"name": "filter",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/quotes/filter?category=",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"quotes",
+								"filter"
+							],
+							"query": [
+								{
+									"key": "category",
+									"value": ""
+								}
+							]
+						},
+						"description": "category= 3 s.d 12"
 					},
 					"response": []
 				},

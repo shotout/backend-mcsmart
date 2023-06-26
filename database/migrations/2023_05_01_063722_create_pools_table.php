@@ -20,6 +20,7 @@ class CreatePoolsTable extends Migration
             $table->float('impress_friends')->default(0);
             $table->float('impress_business')->default(0);
             $table->float('impress_children')->default(0);
+            $table->float('impress_members')->default(0);
             $table->float('total')->default(0);
             $table->integer('quote')->default(0);
             $table->timestamps();

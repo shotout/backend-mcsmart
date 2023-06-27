@@ -16,6 +16,7 @@ use App\Http\Controllers\Api\v1\UserProfileController;
 use App\Http\Controllers\Api\v1\UserCategoryController;
 use App\Http\Controllers\Api\v1\UserPastQuoteController;
 use App\Http\Controllers\Api\v1\UserCollectionController;
+use App\Http\Controllers\Api\v1\SubscriptionsController;
 
 /*
 |--------------------------------------------------------------------------

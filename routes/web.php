@@ -22,6 +22,13 @@ use App\Http\Controllers\ThemeController;
 
 Route::get('/', function () {
     return view('auth.login');
+    // \App\Jobs\QuoteNotif::dispatch()->onQueue(env('SUPERVISOR'));
+    // \App\Jobs\ResetNotif::dispatch()->onQueue(env('SUPERVISOR'));
+    // \App\Jobs\UpdatePool::dispatch('area', 1)->onQueue(env('SUPERVISOR'));
+    // \App\Jobs\RandomQuote::dispatch()->onQueue(env('SUPERVISOR'));
+    // \App\Jobs\GenerateTimerAds::dispatch(1)->onQueue(env('SUPERVISOR'));
+    // \App\Jobs\AdsNotif::dispatch()->onQueue(env('SUPERVISOR'));
+    // return 'success ...';
 });
 
 Route::post('/authenticate',  [LoginController::class, 'authenticate'])->name('login.post');

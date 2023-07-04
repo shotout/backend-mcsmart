@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "2b2aa6cf-5abe-49ba-a793-684a066461d4",
+		"_postman_id": "dd9c7bda-7462-4f90-a0cb-37914ff9514f",
 		"name": "mcsmart",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "12074833"
@@ -1512,7 +1512,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "2|FheBpAJYRtdxXVSmewAD3mAkGzr2GJR0vErSP6dl",
+									"value": "1|SOdXjSB2E73phMBhLLl280MJAFaM42ZXzHCk5Pim",
 									"type": "string"
 								}
 							]
@@ -1526,7 +1526,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{base_url}}/repeat?search=",
+							"raw": "{{base_url}}/repeat?length=10&column=id&dir=desc&search=",
 							"host": [
 								"{{base_url}}"
 							],
@@ -1535,12 +1535,24 @@
 							],
 							"query": [
 								{
+									"key": "length",
+									"value": "10"
+								},
+								{
+									"key": "column",
+									"value": "id"
+								},
+								{
+									"key": "dir",
+									"value": "desc"
+								},
+								{
 									"key": "search",
 									"value": ""
 								}
 							]
 						},
-						"description": "api/v1/repeat?search=\n\nquery string search default kosong, klw isi berati mode search"
+						"description": "api/v1/repeat?length=10&column=id&dir=desc&search=\n\ndefaultnya 10\n\nlength={int}\n\nquery string :\n\ndefaultnya newest\n\na-z column=title&dir=asc\n\nz-a column=title&dir=desc\n\nnewest column=id&dir=desc\n\noldest column=id&dir=asc\n\nsearching :\n\ndefaultnya kosong\n\nsearch={keyword}\n\nsearch=love"
 					},
 					"response": []
 				},

@@ -34,15 +34,15 @@ class UserRepeatController extends Controller
         }
 
         $ur = UserRepeat::where('user_id', auth('sanctum')->user()->id)
-            ->orderBy('id','desc')
+            // ->orderBy('id','desc')
             ->pluck('quote_id')
             ->toArray();
 
         // order by
         $query = Quote::with('like')
             ->whereIn('id', $ur)
-            ->where('status', 2);
-            // ->orderBy($column, $dir);
+            ->where('status', 2)
+            ->orderBy($column, $dir);
 
         // search
         if ($request->has('search') && $request->input('search') != '') {

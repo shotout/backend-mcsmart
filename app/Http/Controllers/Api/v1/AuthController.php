@@ -23,7 +23,6 @@ class AuthController extends Controller
 
         if ($user) {
             // reset notif ads count -------
-                $user->notif_ads_count = 0;
                 $user->notif_count = 0;
                 $user->update();
 
@@ -113,6 +112,7 @@ class AuthController extends Controller
                 }
                 
                 // $user->remember_token = Str::random(16);
+                $user->notif_ads_count = 0;
                 $user->save();
             // ------------------------------
 

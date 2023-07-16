@@ -24,6 +24,7 @@ class AuthController extends Controller
         if ($user) {
             // reset notif ads count -------
                 $user->notif_ads_count = 0;
+                $user->notif_count = 0;
                 $user->update();
 
                 GenerateTimerAds::dispatch($user->id)->onQueue(env('SUPERVISOR'));

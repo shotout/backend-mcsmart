@@ -49,7 +49,13 @@ class QuoteNotif implements ShouldQueue
 
             $desc = strip_tags($quote->title);
             $filterDesc = html_entity_decode($desc);
-            $descShort = substr($filterDesc, 0, 100);
+            // $descShort = substr($filterDesc, 0, 100);
+            $list_word = explode(" ", $filterDesc);
+            $filter_word = array();
+            foreach ($list_word as $key => $value) {
+                if ($key <= 10) $filter_word[] = $value;
+            }
+            $descShort = implode(" ", $filter_word);
 
             foreach ($users as $user) {
                 if ($user->schedule) {

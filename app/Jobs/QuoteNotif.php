@@ -68,7 +68,7 @@ class QuoteNotif implements ShouldQueue
                                             ],
                                             "notification" => [
                                                 "title" => $quote->author,
-                                                "body" => $descShort,  
+                                                "body" => $descShort ."...",  
                                                 "icon" => 'https://backend-api.mcsmartapp.com/assets/logos/logo.jpg',
                                                 // "image" => 'https://backend.nftdaily.app/image.png',
                                                 "sound" => "circle.mp3",

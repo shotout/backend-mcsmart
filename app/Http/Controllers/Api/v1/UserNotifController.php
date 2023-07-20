@@ -6,6 +6,7 @@ use App\Models\Quote;
 use App\Models\UserNotif;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 
 class UserNotifController extends Controller
 {
@@ -41,6 +42,24 @@ class UserNotifController extends Controller
             'status' => 'success',
             'data' => $data
         ], 200);
+    }
+
+    public function reset_count(Request $request)
+    {
+        $request->validate(['device_id' => 'required']);
+
+        $user = User::where('device_id', $request->device_id)->first();
+
+        if($user)
+        {
+            $user->notif_count = 0;
+            $user->update();
+
+            return response()->json([
+                'status' => 'success',
+                'message' => 'notif count reset'
+            ], 200);
+        }
     }
 }
 

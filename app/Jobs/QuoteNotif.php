@@ -73,7 +73,7 @@ class QuoteNotif implements ShouldQueue
                                                 "id" => $quote->id,
                                             ],
                                             "notification" => [
-                                                "title" => "$user->name, your new Fact is waiting for you. ",
+                                                "title" => $user->name .", your new Fact is waiting for you.",
                                                 "body" =>  $descShort ."...",  
                                                 "icon" => 'https://backend-api.mcsmartapp.com/assets/logos/logo.jpg',
                                                 // "image" => 'https://backend.nftdaily.app/image.png',

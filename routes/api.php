@@ -180,6 +180,7 @@ Route::group(
     ],
     function() {
         Route::get('/', [UserNotifController::class, 'index'])->name('index');
+        Route::post('/reset-badge', [UserNotifController::class, 'reset_count'])->name('reset-badge');
     }
 );
 

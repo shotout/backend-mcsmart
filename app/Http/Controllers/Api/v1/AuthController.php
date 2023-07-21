@@ -22,8 +22,9 @@ class AuthController extends Controller
         $user = User::where('device_id', $request->device_id)->first();
 
         if ($user) {
-            // reset notif ads count -------
+            // reset notif ads count & member -------
                 $user->notif_ads_count = 0;
+                $user->is_member = 0;
                 $user->update();
 
                 GenerateTimerAds::dispatch($user->id)->onQueue(env('SUPERVISOR'));

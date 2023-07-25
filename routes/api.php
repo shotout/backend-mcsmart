@@ -30,11 +30,7 @@ use App\Http\Controllers\Api\v1\PurchaselyController;
 |
 */
 
-Route::group(
-    [
-        'prefix' => 'v1/auth',
-        'name' => 'auth.'
-    ],
+Route::prefix('v1/auth')->name('auth.')->group(
     function() {
         Route::post('/check-device', [AuthController::class, 'checkDevice'])->name('checkDevice');
         Route::post('/register', [AuthController::class, 'register'])->name('register');
@@ -42,11 +38,7 @@ Route::group(
     }
 );
 
-Route::group(
-    [
-        'prefix' => 'v1/list',
-        'name' => 'list.'
-    ],
+Route::prefix('v1/list')->name('list.')->group(
     function() {
         Route::get('/icons', [ListController::class, 'icons'])->name('icons');
         Route::get('/topics', [ListController::class, 'topics'])->name('topics');
@@ -56,36 +48,21 @@ Route::group(
     }
 );
 
-Route::group(
-    [
-        'middleware' => 'auth:sanctum',
-        'prefix' => 'v1/rating',
-        'name' => 'rating.'
-    ],
+Route::middleware('auth:sanctum')->prefix('v1/rating')->name('rating.')->group(
     function() {
         Route::get('/', [UserRatingController::class, 'show'])->name('show');
         Route::post('/', [UserRatingController::class, 'store'])->name('store');
     }
 );
 
-Route::group(
-    [
-        'middleware' => 'auth:sanctum',
-        'prefix' => 'v1/user',
-        'name' => 'user.'
-    ],
+Route::middleware('auth:sanctum')->prefix('v1/user')->name('user.')->group(
     function() {
         Route::get('/', [UserProfileController::class, 'show'])->name('show');
         Route::patch('/', [UserProfileController::class, 'update'])->name('update');
     }
 );
 
-Route::group(
-    [
-        'middleware' => 'auth:sanctum',
-        'prefix' => 'v1/collection',
-        'name' => 'collection.'
-    ],
+Route::middleware('auth:sanctum')->prefix('v1/collection')->name('collection.')->group(
     function() {
         Route::get('/', [UserCollectionController::class, 'index'])->name('index');
         Route::get('/{id}', [UserCollectionController::class, 'show'])->name('show');
@@ -97,34 +74,19 @@ Route::group(
     }
 );
 
-Route::group(
-    [
-        'middleware' => 'auth:sanctum',
-        'prefix' => 'v1/category',
-        'name' => 'category.'
-    ],
+Route::middleware('auth:sanctum')->prefix('v1/category')->name('category.')->group(
     function() {
         Route::patch('/', [UserCategoryController::class, 'update'])->name('update');
     }
 );
 
-Route::group(
-    [
-        'middleware' => 'auth:sanctum',
-        'prefix' => 'v1/theme',
-        'name' => 'theme.'
-    ],
+Route::middleware('auth:sanctum')->prefix('v1/theme')->name('theme.')->group(
     function() {
         Route::patch('/', [UserThemeController::class, 'update'])->name('update');
     }
 );
 
-Route::group(
-    [
-        'middleware' => 'auth:sanctum',
-        'prefix' => 'v1/quotes',
-        'name' => 'quote.'
-    ],
+Route::middleware('auth:sanctum')->prefix('v1/quotes')->name('quote.')->group(
     function() {
         Route::get('/', [QuoteController::class, 'index'])->name('index');
         Route::post('/share/{id}', [QuoteController::class, 'share'])->name('share');
@@ -134,12 +96,7 @@ Route::group(
     }
 );
 
-Route::group(
-    [
-        'middleware' => 'auth:sanctum',
-        'prefix' => 'v1/like',
-        'name' => 'like.'
-    ],
+Route::middleware('auth:sanctum')->prefix('v1/like')->name('like.')->group(
     function() {
         Route::get('/', [UserLikeController::class, 'index'])->name('index');
         Route::post('/{id}', [UserLikeController::class, 'store'])->name('store');
@@ -148,12 +105,7 @@ Route::group(
     }
 );
 
-Route::group(
-    [
-        'middleware' => 'auth:sanctum',
-        'prefix' => 'v1/past-quote',
-        'name' => 'past-quote.'
-    ],
+Route::middleware('auth:sanctum')->prefix('v1/past-quote')->name('past-quote.')->group(
     function() {
         Route::get('/', [UserPastQuoteController::class, 'index'])->name('index');
         Route::post('/{id}', [UserPastQuoteController::class, 'store'])->name('store');
@@ -161,35 +113,20 @@ Route::group(
     }
 );
 
-Route::group(
-    [
-        'middleware' => 'auth:sanctum',
-        'prefix' => 'v1/setting',
-        'name' => 'setting.'
-    ],
+Route::middleware('auth:sanctum')->prefix('v1/setting')->name('setting.')->group(
     function() {
         Route::get('/paywall', [SettingController::class, 'paywall'])->name('paywall');
     }
 );
 
-Route::group(
-    [
-        'middleware' => 'auth:sanctum',
-        'prefix' => 'v1/notif',
-        'name' => 'notif.'
-    ],
+Route::middleware('auth:sanctum')->prefix('v1/notif')->name('notif.')->group(
     function() {
         Route::get('/', [UserNotifController::class, 'index'])->name('index');
         Route::post('/reset-badge', [UserNotifController::class, 'reset_count'])->name('reset-badge');
     }
 );
 
-Route::group(
-    [
-        'middleware' => 'auth:sanctum',
-        'prefix' => 'v1/repeat',
-        'name' => 'repeat.'
-    ],
+Route::middleware('auth:sanctum')->prefix('v1/repeat')->name('repeat.')->group(
     function() {
         Route::get('/', [UserRepeatController::class, 'index'])->name('index');
         Route::post('/{id}', [UserRepeatController::class, 'store'])->name('store');
@@ -197,33 +134,20 @@ Route::group(
     }
 );
 
-Route::group(
-    [
-        'prefix' => 'v1/admob',
-        'name' => 'admob.'
-    ],
+Route::prefix('v1/admob')->name('admob.')->group(
     function() {
         Route::get('/', [AdmobController::class, 'callback'])->name('callback');
     }
 );
 
-Route::group(
-    [
-        'middleware' => 'auth:sanctum',
-        'prefix' => 'v1/subscription',
-        'name' => 'subscription.'
-    ],
+Route::middleware('auth:sanctum')->prefix('v1/subscription')->name('subscription.')->group(
     function() {
         Route::get('/', [SubscriptionsController::class, 'index'])->name('index');
         Route::post('/update', [SubscriptionsController::class, 'subscribe'])->name('subscribe');
     }
 );
 
-Route::group(
-    [
-        'prefix' => 'v1/purchasely',
-        'name' => 'purchasely.'
-    ],
+Route::prefix('v1/purchasely')->name('purchasely.')->group(
     function() {
         Route::post('/', [PurchaselyController::class, 'index'])->name('purchasely');
     }

@@ -67,16 +67,16 @@ Route::prefix('quotes')->middleware('auth:web')->group(function () {
     Route::get('/edit/{id}', [QuotesController::class, 'edit'])->name('qt.edit');
     Route::post('/update', [QuotesController::class, 'update'])->name('qt.update');
     Route::get('/import-quotes', [QuotesController::class, 'import'])->name('qt.import');
-    Route::post('/importcsv', [QuotesController::class, 'importcsv'])->name('qt.import');
+    Route::post('/importcsv', [QuotesController::class, 'importcsv'])->name('qt.importcsv');
 });
 
 Route::prefix('pool')->middleware('auth:web')->group(function () {
     Route::get('/list', [PoolController::class, 'index'])->name('pl.list');
     Route::post('/update-area', [PoolController::class, 'area'])->name('pl.area');
-    Route::get('/feels', [PoolController::class, 'feels'])->name('pl.list');
+    Route::get('/feels', [PoolController::class, 'feels'])->name('pl.feel');
     Route::post('/update-feels', [PoolController::class, 'feel'])->name('pl.feels');
     Route::get('/ways', [PoolController::class, 'ways'])->name('pl.ways');
-    Route::post('/update-ways', [PoolController::class, 'way'])->name('pl.ways');
+    Route::post('/update-ways', [PoolController::class, 'way'])->name('pl.way');
 });
 
 Route::prefix('themes')->middleware('auth:web')->group(function () {

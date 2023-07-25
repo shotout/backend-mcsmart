@@ -27,7 +27,7 @@ class AuthController extends Controller
                 $user->is_member = 0;
                 $user->update();
 
-                GenerateTimerAds::dispatch($user->id)->onQueue(env('SUPERVISOR'));
+                // GenerateTimerAds::dispatch($user->id)->onQueue(env('SUPERVISOR'));
             // ---------
 
             $token = $user->createToken('auth_token')->plainTextToken;

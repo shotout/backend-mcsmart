@@ -24,6 +24,7 @@ class AuthController extends Controller
         if ($user) {
             // reset notif ads count & member -------
                 $user->notif_ads_count = 0;
+                $user->notif_count = 0;
                 $user->is_member = 0;
                 $user->update();
 

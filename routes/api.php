@@ -33,7 +33,9 @@ use App\Http\Controllers\Api\v1\PurchaselyController;
 Route::prefix('v1/auth')->name('auth.')->group(
     function() {
         Route::post('/check-device', [AuthController::class, 'checkDevice'])->name('checkDevice');
-        Route::post('/register', [AuthController::class, 'register'])->name('register');
+        Route::post('/register', [AuthController::class, 'register'])
+            ->middleware(['throttle:register'])
+            ->name('register');
         Route::post('/delete', [AuthController::class, 'delete'])->name('delete');
     }
 );

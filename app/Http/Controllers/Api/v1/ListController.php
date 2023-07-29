@@ -11,6 +11,7 @@ use App\Models\Category;
 use App\Models\UserCategory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Version;
 
 class ListController extends Controller
 {
@@ -119,5 +120,15 @@ class ListController extends Controller
             'status' => 'success',
             'data' => $data
         ], 200);
+    }
+
+    public function versions()
+    {
+        $data = version::get();
+        return response()->json([
+            'status' => 'success',
+            'data' => $data
+        ], 200);
+
     }
 }

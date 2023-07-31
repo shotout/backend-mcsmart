@@ -45,6 +45,7 @@ Route::prefix('v1/list')->name('list.')->group(
         Route::get('/themes', [ListController::class, 'themes'])->name('themes');
         Route::get('/categories', [ListController::class, 'categories'])->name('categories');
         Route::get('/links', [ListController::class, 'links'])->name('links');
+        Route::get('/versions', [ListController::class, 'versions'])->name('versions');
     }
 );
 

@@ -8,6 +8,7 @@ use App\Jobs\GenerateTimer;
 use Illuminate\Http\Request;
 use App\Jobs\GenerateTimerAds;
 use App\Http\Controllers\Controller;
+use App\Models\Subscription;
 
 class UserProfileController extends Controller
 {
@@ -54,6 +55,14 @@ class UserProfileController extends Controller
         if ($request->has('commit_goal') && $request->commit_goal != '') {
             $user->commit_goal = $request->commit_goal;
             $user->update();
+
+            //reset subscription registered device
+            $subscription = Subscription::where('user_id', $user->id)->first();
+            if ($subscription) {
+                $subscription->plan_id = 1;
+                $subscription->type = 1;
+                $subscription->update();
+            }
         }
 
         // schedule reminder ------------

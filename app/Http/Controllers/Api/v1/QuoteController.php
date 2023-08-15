@@ -308,25 +308,26 @@ class QuoteController extends Controller
         // pagination
         // $data = $query->paginate($length);
 
-        // add repeat quote
-        $user = User::find(auth('sanctum')->user()->id);
-        $now = now()->setTimezone($user->schedule->timezone)->format('Y-m-d H:i:s');
-        $ur = UserRepeat::where('user_id', auth('sanctum')->user()->id)
-            ->whereDate('time', '<=', $now)
-            ->orderBy('time','asc')
-            ->pluck('quote_id')
-            ->toArray();
-        $quoteRepeat = Quote::with('like','repeat')->whereIn('id', $ur)->get();
-        foreach ($quoteRepeat as $item) {
-            $data->prepend($item);
-        }
+        // add repeat quote ---------------
+        // $user = User::find(auth('sanctum')->user()->id);
+        // $now = now()->setTimezone($user->schedule->timezone)->format('Y-m-d H:i:s');
+        // $ur = UserRepeat::where('user_id', auth('sanctum')->user()->id)
+        //     ->whereDate('time', '<=', $now)
+        //     ->orderBy('time','asc')
+        //     ->pluck('quote_id')
+        //     ->toArray();
+        // $quoteRepeat = Quote::with('like','repeat')->whereIn('id', $ur)->get();
+        // foreach ($quoteRepeat as $item) {
+        //     $data->prepend($item);
+        // }
 
-        $next = UserRepeat::whereIn('quote_id', $ur)->get();
-        foreach ($next as $item) {
-            $time = Carbon::createFromFormat('Y-m-d H:i:s', $item->time)->addMinute(1440);
-            $item->time = $time;
-            $item->update();
-        }
+        // $next = UserRepeat::whereIn('quote_id', $ur)->get();
+        // foreach ($next as $item) {
+        //     $time = Carbon::createFromFormat('Y-m-d H:i:s', $item->time)->addMinute(1440);
+        //     $item->time = $time;
+        //     $item->update();
+        // }
+        // ------------------
         
         // quote notif detail
         if ($request->has('notif') && $request->notif != '') {

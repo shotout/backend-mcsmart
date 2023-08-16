@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Jobs\GenerateTimerAds;
 use App\Http\Controllers\Controller;
 use App\Models\Subscription;
+use App\Models\UserRepeat;
 
 class UserProfileController extends Controller
 {
@@ -62,6 +63,12 @@ class UserProfileController extends Controller
                 $subscription->plan_id = 1;
                 $subscription->type = 1;
                 $subscription->update();
+            }
+
+            //reset repeat list
+            $repeat = UserRepeat::where('user_id', $user->id)->get();
+            if($repeat) {                
+                $repeat->delete();
             }
         }
 

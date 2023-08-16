@@ -68,7 +68,9 @@ class UserProfileController extends Controller
             //reset repeat list
             $repeat = UserRepeat::where('user_id', $user->id)->get();
             if($repeat) {                
-                $repeat->delete();
+               foreach($repeat as $r) {
+                   $r->delete();
+               }
             }
         }
 

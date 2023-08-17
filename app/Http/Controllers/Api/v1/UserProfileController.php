@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Jobs\GenerateTimerAds;
 use App\Http\Controllers\Controller;
 use App\Models\Subscription;
+use App\Models\UserQuote;
 use App\Models\UserRepeat;
 
 class UserProfileController extends Controller
@@ -70,6 +71,14 @@ class UserProfileController extends Controller
             if($repeat) {                
                foreach($repeat as $r) {
                    $r->delete();
+               }
+            }
+
+            //reset like list
+            $liked = UserQuote::where('user_id', $user->id)->get();
+            if($liked) {                
+               foreach($liked as $l) {
+                   $l->delete();
                }
             }
         }

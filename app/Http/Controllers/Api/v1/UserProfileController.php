@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Jobs\GenerateTimerAds;
 use App\Http\Controllers\Controller;
 use App\Models\Collection;
+use App\Models\PastQuote;
 use App\Models\Subscription;
 use App\Models\UserCategory;
 use App\Models\UserQuote;
@@ -97,6 +98,14 @@ class UserProfileController extends Controller
             if($collections) {                
                foreach($collections as $cl) {
                    $cl->delete();
+               }
+            }
+
+            //reset past facts
+            $facts = PastQuote::where('user_id', $user->id)->get();
+            if($facts) {                
+               foreach($facts as $f) {
+                   $f->delete();
                }
             }
         }

@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Jobs\GenerateTimerAds;
 use App\Http\Controllers\Controller;
 use App\Models\Subscription;
+use App\Models\UserCategory;
 use App\Models\UserQuote;
 use App\Models\UserRepeat;
 
@@ -79,6 +80,14 @@ class UserProfileController extends Controller
             if($liked) {                
                foreach($liked as $l) {
                    $l->delete();
+               }
+            }
+
+            //reset category
+            $categories = UserCategory::where('user_id', $user->id)->whereNotIn('category_id',[1,2])->get();
+            if($categories) {                
+               foreach($categories as $c) {
+                   $c->delete();
                }
             }
         }

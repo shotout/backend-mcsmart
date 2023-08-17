@@ -8,6 +8,7 @@ use App\Jobs\GenerateTimer;
 use Illuminate\Http\Request;
 use App\Jobs\GenerateTimerAds;
 use App\Http\Controllers\Controller;
+use App\Models\Collection;
 use App\Models\Subscription;
 use App\Models\UserCategory;
 use App\Models\UserQuote;
@@ -88,6 +89,14 @@ class UserProfileController extends Controller
             if($categories) {                
                foreach($categories as $c) {
                    $c->delete();
+               }
+            }
+
+            //reset collection
+            $collections = Collection::where('user_id', $user->id)->get();
+            if($collections) {                
+               foreach($collections as $cl) {
+                   $cl->delete();
                }
             }
         }

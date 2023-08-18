@@ -113,8 +113,7 @@ class UserProfileController extends Controller
             //reset to random theme
             $themes = UserTheme::where('user_id', $user->id)->get();
             if($themes) {                
-                $themes->theme_id = 1;
-                $themes->update();
+                $themes->delete();
                }
             
         }

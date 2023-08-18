@@ -14,6 +14,7 @@ use App\Models\Subscription;
 use App\Models\UserCategory;
 use App\Models\UserQuote;
 use App\Models\UserRepeat;
+use App\Models\UserTheme;
 
 class UserProfileController extends Controller
 {
@@ -108,6 +109,14 @@ class UserProfileController extends Controller
                    $f->delete();
                }
             }
+
+            //reset to random theme
+            $themes = UserTheme::where('user_id', $user->id)->get();
+            if($themes) {                
+                $themes->theme_id = 1;
+                $themes->update();
+               }
+            
         }
 
         // schedule reminder ------------

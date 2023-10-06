@@ -42,21 +42,8 @@ return new class extends Migration
                 "created_at" => now()
             ],
             [
-                "group_id" => 2,
-                "name" => "Theme 55",
-                "is_free" => false,
-                "font_family" => "Lobster",
-                "font_size" => 24,
-                "line_height" => 34,
-                "text_color" => "#FFFFFF",
-                "text_shadow" => "rgba(0, 0, 0, 0.75)",
-                "text_shadow_offset" => '{"width":1,"height":1}',
-                "background_color" => null,
-                "created_at" => now()
-            ],
-            [
                 "group_id" => 3,
-                "name" => "Theme 56",
+                "name" => "Theme 55",
                 "is_free" => false,
                 "font_family" => "Rosario",
                 "font_size" => 24,
@@ -69,7 +56,7 @@ return new class extends Migration
             ],
             [
                 "group_id" => 3,
-                "name" => "Theme 57",
+                "name" => "Theme 56",
                 "is_free" => false,
                 "font_family" => "Merienda-Bold",
                 "font_size" => 24,
@@ -82,7 +69,7 @@ return new class extends Migration
             ],
             [
                 "group_id" => 3,
-                "name" => "Theme 58",
+                "name" => "Theme 57",
                 "is_free" => false,
                 "font_family" => "Anton",
                 "font_size" => 24,
@@ -95,7 +82,7 @@ return new class extends Migration
             ],
             [
                 "group_id" => 4,
-                "name" => "Theme 59",
+                "name" => "Theme 58",
                 "is_free" => false,
                 "font_family" => "PlayfairDisplay-Bold",
                 "font_size" => 24,
@@ -108,7 +95,7 @@ return new class extends Migration
             ],
             [
                 "group_id" => 6,
-                "name" => "Theme 60",
+                "name" => "Theme 59",
                 "is_free" => false,
                 "font_family" => "Lato",
                 "font_size" => 24,
@@ -121,7 +108,7 @@ return new class extends Migration
             ],
             [
                 "group_id" => 6,
-                "name" => "Theme 61",
+                "name" => "Theme 60",
                 "is_free" => false,
                 "font_family" => "Montserrat-SemiBold",
                 "font_size" => 24,
@@ -134,12 +121,25 @@ return new class extends Migration
             ],
             [
                 "group_id" => 7,
-                "name" => "Theme 62",
+                "name" => "Theme 61",
                 "is_free" => false,
                 "font_family" => "Bebas Neue",
                 "font_size" => 24,
                 "line_height" => 38,
                 "text_color" => "#FFD600",
+                "text_shadow" => null,
+                "text_shadow_offset" => null,
+                "background_color" => null,
+                "created_at" => now()
+            ],
+            [
+                "group_id" => 7,
+                "name" => "Theme 62",
+                "is_free" => false,
+                "font_family" => "Lobster",
+                "font_size" => 24,
+                "line_height" => 38,
+                "text_color" => "#1E2136",
                 "text_shadow" => null,
                 "text_shadow_offset" => null,
                 "background_color" => null,
